@@ -1,51 +1,24 @@
 <html>
+<head></head>
 <body>
-  <h1>This is a page for testing ad blockers.</h1>
-  <h2>Test One: script loading</h2>
-  <div>
-    <p>
-    There's not much to see here on the page, but this just tests whether or not an ad blocker blocks a request to contextual.media.net/bidexchange.js. I pulled this script off of forbes.com. Check your network tab in Dev Tools; if you see a request
-    for this js file, it hasn't been blocked.
-    </p>
-    <script src='https://contextual.media.net/bidexchange.js?cid=8CUX956JU'></script>
-  </div>
-  <h2>Test 2: a div with an "ad" class</h2>
-  <div>
-    <p>
-    Just below this text is a div with an "ad" class. Did it get blocked?
-    </p>
-  </div>
-  <div style="width: 300px; height: 100px; background-color: red" class="ad">I AM AN AD</div>
-  <h2>Test 3: Element appended to page with an "ad" class</h3>
-  <div>
-    <p>Here, we have a script that appends a div with an ad class onto the dom after 2 seconds. Does it render?</p>
-  </div>
-  <div id="test3Target"></div>
-  <script>
-    setTimeout(() => {
-      const div = document.createElement('DIV');
-      div.classList.add('ad');
-      div.innerText = 'I AM AN AD';
-      document.getElementById('test3Target').appendChild(div);
-    }, 2000);
-  </script>
-  <h2>Test 4: Element appended to page with an "ad" class and a 300x250 image</h2>
-  <div>
-    <p>After 2 seconds, a script will run injecting an div with an ad class and an external 250x300 image right below this text. Does it render?</p>
-  </div>
-  <div id="test4Target"></div>
-  <script>
-    setTimeout(() => {
-      const div = document.createElement('DIV');
+    <div>
+        <input id="i1"><button id="b1">Input 1</button>
+    </div>
+    <div>
+        <input id="i2"><button id="b2">Input 2</button>
+    </div>
 
-      div.classList.add('ad');
-      document.getElementById('test4Target').appendChild(div);
-      const img = document.createElement('IMG');
-      div.appendChild(img);
-      img.src = 'http://emilyblyphd.com/wp-content/uploads/2011/07/250x300.jpeg';
-      img.classList.add('ad');
-    }, 2000);
-  </script>
-  </html>
+<script
+  src="https://code.jquery.com/jquery-3.2.0.min.js"
+  integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="
+  crossorigin="anonymous"></script>
+<script>
+$('#b2').click(() => {
+    $('body').append('<p>' + $('#i2').val() + '</p>');
+});
+$('#b1').click(() => {
+    $('body').append('<p>' + $('#i1').val() + '</p>');
+});
+</script>
 </body>
-</html>
+
